@@ -5,6 +5,30 @@ import apiURL from '../api';
 
 export const App = () => {
     const [items, setItems] = useState([]);
+	const [currentItem, setCurrentItem] = useState([null]);
+
+	async function deleteItem(id) {
+		const response = await fetch (`${apiURL}/items/${id}`, {
+			method: "DELETE",
+		});
+
+		const filteredItems = items.filter(item => {
+			if (item.id === id) {
+				return false;
+			} else {
+				return true;
+			}
+		});
+		setItems(filteredItems);
+		setCurrentItem(null);
+	}
+
+	function confirmDelete(id){
+		const confirmed = window.confirm("Are you sure you want to delete this item?");
+		if (confirmed){
+			deleteItem(id);
+		}
+	}
       
     useEffect(() => {
           async function fetchItems(){
@@ -19,6 +43,22 @@ export const App = () => {
 	
 	fetchItems();
     }, []);
+
+if (currentItem) {
+	return (
+		<main>
+			<h1>{currentItem.name}</h1>
+			<p>£{currentItem.price}</p>
+			<p>{currentItem.description}</p>
+			<img src ={currentItem.image} alt=""/>
+			<p><button onClick ={() => setCurrentItem(null)}>All Items</button></p>
+			<p><button onClick={() => confirmDelete(currentItem.id)}>Delete Item</button></p>
+
+		</main>
+	);
+}
+
+
     return (
          <main>
        <h1>Inventory App</h1>
@@ -26,8 +66,10 @@ export const App = () => {
 		<ul>
 			{items.map(item => (
 				<li key={item.id}>
-					<h2>{item.name}</h2>
-					<img src ={item.image} alt=""></img>
+					<h2>
+						<button onClick={() => setCurrentItem(item)}>{item.name}</button>
+					</h2>
+					<img src ={item.image} alt="" />
 				</li>
 		))}</ul>
 	         {/* <Items items={item} /> */}
