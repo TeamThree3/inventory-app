@@ -5,7 +5,10 @@ const app = express();
 const morgan = require('morgan');
 const path = require('path');
 const cors = require('cors');
+const itemsRouter = require('./routes/items');
 
+// Use the items router - WE ADDED
+app.use('/items', itemsRouter);
 //Allow CORS requests
 app.use(cors());
 // logging middleware
