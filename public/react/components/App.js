@@ -119,13 +119,27 @@ export const App = () => {
 if (currentItem) {
 	return (
 		<main>
-			<h1>{currentItem.name}</h1>
-			<p>£{currentItem.price}</p>
-			<p>{currentItem.description}</p>
-			<img src ={currentItem.image} alt=""/>
-			<p><button onClick={() => setCurrentItem(null)}>All Items</button></p>
-			<p><button onClick={() => confirmDelete(currentItem.id)}>Delete Item</button></p>
-            <p><button onClick={() => setIsUpdatingItem(true)}>Update Item</button></p>
+            <div class="header">
+            <h1>Unlock Your Stock</h1>
+            <div class="header-right">
+            <p><button className="allItemsButton" onClick={() => setCurrentItem(null)}>Back to All Items</button></p>
+			<p><button className="deleteButton" onClick={() => confirmDelete(currentItem.id)}>Delete Item</button></p>
+            <p><button className="updateButton" onClick={() => setIsUpdatingItem(true)}>Update Item</button></p>
+            </div>
+            </div>
+
+            <div class="block">
+                <div class="name">
+                    <h1>{currentItem.name}</h1>
+                </div>
+                <div class="block2">
+                    <img className="individualImage" src ={currentItem.image} alt=""/>
+                    <div class="priceAndDescription">
+                    <p>Price: £{currentItem.price}</p>
+                    <p>Description:     {currentItem.description}</p>
+                </div>
+                </div>
+            </div>
         </main>
 	);
 }
@@ -133,18 +147,27 @@ if (currentItem) {
 
     return (
          <main>
-       <h1>Inventory App</h1>
-       <p><button onClick={() => setIsAddingItem(true)}> Add Item </button></p>
+            <div class="header">
+            <h1>Unlock Your Stock</h1>
+                <div class="header-right">
+                <p><button className="addItemButton" onClick={() => setIsAddingItem(true)}> Add Item </button></p>
+                </div>
+            </div>
 
-		<ul>
+
+		<div class="block">
+        <ol className='inventory'>
 			{items.map(item => (
 				<li key={item.id}>
 					<h2>
-						<button onClick={() => setCurrentItem(item)}>{item.name}</button>
+                        <p><button className="productButton" onClick={() => setCurrentItem(item)}>{item.name}</button></p>
 					</h2>
-					<img src ={item.image} alt="" />
+                    <p><button onClick={() => setCurrentItem(item)}>{<img src={item.image} alt="" className="itemImages" />}</button></p>
+
+                    {/* <img src={item.image} alt="" className="itemImages" /> */}
 				</li>
-		))}</ul>
+		))}</ol>
+        </div>
 	         {/* <Items items={item} /> */}
          </main>
     )

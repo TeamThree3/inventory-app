@@ -19,7 +19,6 @@ export const UpdateForm = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     props.updateItem(props.itemId, data) 
-    props.goHome();
 }
 
   return (

@@ -23,6 +23,8 @@ export const Form = (props) => {
 
   return (
     <>
+    <div class="header">
+            <h1>Unlock Your Stock</h1>
       <h1>Add an Item</h1>
       <form onSubmit={handleSubmit}>
         <p>
@@ -86,6 +88,7 @@ export const Form = (props) => {
       <button type="button" className="link" onClick={props.goHome}>
         &larr; Back to Inventory
       </button>
+      </div>
     </>
   )
 }
