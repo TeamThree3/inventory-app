@@ -26,10 +26,11 @@ export const Form = (props) => {
      <div class="header">
             <h1>Unlock Your Stock</h1>
                 <div class="header-right">
-                <p><button type="button" className="addBackButton" onClick={props.goHome}>&larr; Back to Inventory</button></p>
+                <p><button type="button" className="addBackButton" onClick={props.goHome}>Back to Inventory</button></p>
                 </div>
             </div>
-   
+
+      <h1>Add an Item</h1>
       <form onSubmit={handleSubmit}>
         <p>
           <label htmlFor="name">Name</label>

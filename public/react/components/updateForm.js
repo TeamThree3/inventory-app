@@ -38,6 +38,13 @@ export const UpdateForm = (props) => {
 
   return (
     <>
+     <div class="header">
+            <h1>Unlock Your Stock</h1>
+                <div class="header-right">
+                <p><button type="button" className="addBackButton" onClick={props.goHome}>Back to Inventory</button></p>
+                </div>
+            </div>
+
       <h1>Update an Item</h1>
       <form onSubmit={handleSubmit}>
         <p>
@@ -67,7 +74,7 @@ export const UpdateForm = (props) => {
           <label htmlFor="price">Price</label>
           <br />
           <input
-            type="text"
+            type="number"
             name="price"
             id="price"
             value={data.price}
@@ -91,7 +98,7 @@ export const UpdateForm = (props) => {
           <label htmlFor="image">Image</label>
           <br />
           <input
-            type="text"
+            type="url"
             name="image"
             id="image"
             value={data.image}
@@ -101,11 +108,9 @@ export const UpdateForm = (props) => {
         </p>
         <p>
           {/* <button type="submit" onClick={props.confirmUpdate}>Update Item</button> */}
-          <button type="submit" onClick={() => props.confirmUpdate(props.itemId)}>Update Item</button>
+          <button button className="submitUpdateItem" type="submit" onClick={() => props.confirmUpdate(props.itemId)}>Update Item</button>
         </p>
       </form>
-      <button type="button" className="link" onClick={props.goHome}>
-        &larr; Back to Inventory
-      </button>
+
     </>
   )}
