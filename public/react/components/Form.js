@@ -23,9 +23,13 @@ export const Form = (props) => {
 
   return (
     <>
-    <div class="header">
+     <div class="header">
             <h1>Unlock Your Stock</h1>
-      <h1>Add an Item</h1>
+                <div class="header-right">
+                <p><button type="button" className="addBackButton" onClick={props.goHome}>&larr; Back to Inventory</button></p>
+                </div>
+            </div>
+   
       <form onSubmit={handleSubmit}>
         <p>
           <label htmlFor="name">Name</label>
@@ -36,6 +40,7 @@ export const Form = (props) => {
             id="name"
             value={data.name}
             onChange={handleChange}
+            required
           />
         </p>
         <p>
@@ -46,17 +51,19 @@ export const Form = (props) => {
             name="description"
             value={data.description}
             onChange={handleChange}
+            required
           />
         </p>
         <p>
           <label htmlFor="price">Price</label>
           <br />
           <input
-            type="text"
+            type="number"
             name="price"
             id="price"
             value={data.price}
             onChange={handleChange}
+            required
           />
         </p>
         <p>
@@ -68,27 +75,25 @@ export const Form = (props) => {
             id="category"
             value={data.category}
             onChange={handleChange}
+            required
           />
         </p>
         <p>
           <label htmlFor="image">Image</label>
           <br />
           <input
-            type="text"
+            type="url"
             name="image"
             id="image"
             value={data.image}
             onChange={handleChange}
+            required
           />
         </p>
         <p>
-          <button type="submit">Add Item</button>
+          <button className="submitAddItem" type="submit">Add Item</button>
         </p>
       </form>
-      <button type="button" className="link" onClick={props.goHome}>
-        &larr; Back to Inventory
-      </button>
-      </div>
     </>
   )
-}
+}   

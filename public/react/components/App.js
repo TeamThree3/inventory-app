@@ -52,8 +52,8 @@ export const App = () => {
         })
 
         const newItem = await response.json()
-        setItems([...items, newItem])
-        setIsAddingItem(false)
+        setItems([...items, newItem]);
+        setIsAddingItem(false);
     }
 
     async function updateItem(id, updatedItem){
@@ -73,12 +73,12 @@ export const App = () => {
         }
     }
 
-    function confirmUpdate(id){
-		const confirmed = window.confirm("Are you sure you want to update this item?");
-		if (confirmed){
-			updateItem(id);
-		}
-	}
+    function confirmUpdate(id) {
+        const confirmed = window.confirm("Are you sure you want to update this item?");
+        if (confirmed) {
+            updateItem(id);
+        }
+    }
 
     useEffect(() => {
           async function fetchItems(){
@@ -111,7 +111,7 @@ export const App = () => {
       }
 
       if (isUpdatingItem) {
-        return <UpdateForm goHome={goHome} updateItem={updateItem} itemId={currentItem.id} />
+        return <UpdateForm goHome={goHome} updateItem={updateItem} itemId={currentItem.id} confirmUpdate={confirmUpdate} />
     }
     
 
